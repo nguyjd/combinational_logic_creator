@@ -4,6 +4,7 @@ def load_opcodes_and_names(debug = False):
 
     file_loc = str(pathlib.Path(__file__).parent.resolve())
     try:
+        opcodes_len = 0
         with open(file_loc + '\opcodes.txt', 'r') as file:
             opcodes = file.readlines()
 
@@ -13,10 +14,14 @@ def load_opcodes_and_names(debug = False):
         else:
             opcodes_empty = False
 
+        opcodes_len = opcodes[0].strip()
         for index, opcode in enumerate(opcodes):
             
             # Remove the newline
             opcodes[index] = opcode.strip()
+            
+            if opcodes_len != len(opcodes[index]):
+                raise ValueError(f'Differing length opcodes in the opcodes.txt found on line {index + 1}')
 
             if len(opcodes[index]) == 0:
                 raise ValueError(f'Invaild opcode in the opcodes.txt on line {index + 1}')
