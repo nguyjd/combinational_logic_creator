@@ -4,7 +4,7 @@ import unittest
 class TestEmptyOpcodesFile(unittest.TestCase):
 
     def test(self):
-        self.assertEqual(load_opcodes_and_names(), ('empty', ['jump']))
+        self.assertEqual(load_opcodes_and_names(), ('empty', 'empty'))
 
 
 if __name__ == '__main__':
