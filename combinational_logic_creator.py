@@ -1,4 +1,5 @@
 import multiprocessing
+import pyperclip
 
 # Project created modules
 from file_loading import load_opcodes_and_names
@@ -53,15 +54,26 @@ if __name__ == '__main__':
 
                 case 'generate':
                     
+                    # Wait for the ui to send the information over.
                     while len(logic_list) == 0:
                         pass
                     
+                    # generate the expression.
                     equation = boolean_generation(opcodes_list, logic_list.pop(), True)
 
+                    # Check for error in generation.
                     if equation != None:
-                        equation = boolean_simplfy(equation, True)
                         
+                        # simplfy multiple time to ensure the equation is the most simple.
+                        for _ in range(0, 10):
+                            equation = boolean_simplfy(equation, True)
+                        
+                        # Check for error in simplfing.
                         if equation != None:
+                            
+                            # Copy the expression to the clipboard.
+                            pyperclip.copy(equation)
+
                             # Tell the UI that the program is done.
                             response_list.append('done')
                         else:
