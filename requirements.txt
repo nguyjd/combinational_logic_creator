@@ -1,0 +1,5 @@
+boolean.py
+simpleaudio
+pillow
+pygubu
+pyperclip

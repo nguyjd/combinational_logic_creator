@@ -33,14 +33,14 @@ def load_opcodes_and_names(debug = False):
 
     except ValueError as err:
         if opcodes_empty:
-            opcodes = 'empty'
+            opcodes = ['empty']
         else:
-            opcodes = 'badvalues'
+            opcodes = ['badvalues']
         if debug:
             print(err)
 
     except FileNotFoundError as err:
-        opcodes = 'nofile'
+        opcodes = ['nofile']
         if debug:
             print(err)
             print('Ensure that the file_loading.py is in the same folder with the txt files.')
@@ -64,14 +64,14 @@ def load_opcodes_and_names(debug = False):
 
     except ValueError as err:
         if signal_names_empty:
-            signal_names = 'empty'
+            signal_names = ['empty']
         else:
-            signal_names = 'badvalue'
+            signal_names = ['badvalue']
         if debug:
             print(err)
 
     except FileNotFoundError as err:
-        signal_names = 'nofile'
+        signal_names = ['nofile']
         if debug:
             print(err)
             print('Ensure that the file_loading.py is in the same folder with the txt files.')
