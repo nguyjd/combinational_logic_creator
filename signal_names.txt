@@ -1,4 +1,4 @@
 and
 or
-xor
+nor
 nand
