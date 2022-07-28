@@ -91,6 +91,9 @@ def boolean_simplfy(expression: str, debug = False):
         if unaccountedPair != 0:
             raise ValueError('Mismatch Parentheses')
 
+        if debug:
+            print('Completed equation validation.')
+
     except ValueError as err:
         if debug:
             print(f'The expression is invalid. Error Message: {err}')
@@ -103,6 +106,10 @@ def boolean_simplfy(expression: str, debug = False):
 
     # Simplify the expression
     try:
+
+        if debug:
+            print('Simplifing expression.')
+
         algebra = boolean.BooleanAlgebra()
         expression = str(algebra.parse(expression).simplify())
     except Exception as err:
@@ -110,5 +117,8 @@ def boolean_simplfy(expression: str, debug = False):
             print(f'Exception thrown while simplifying the expression. Error Message: {err}')
         return None
     
+    if debug:
+        print('Completed simplifing expression.')
+        print(f'Simplified expression. {expression}')
     return expression
 

@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from pygubu.widgets.scrolledframe import ScrolledFrame
 import pathlib
-from tkinter.messagebox import showinfo
+from tkinter.messagebox import showinfo, showerror
 
 # Constants for the window
 BG_COLOR = '#1E1E1E'
@@ -32,21 +32,25 @@ def load_event(status_text, logo, circuit, opcodes_list, names_list, response):
     # Create the scrolled frames
     opcodes = ScrolledFrame(circuit, scrolltype="both")
 
-    choose_signal = ttk.Label(circuit, text = 'Choose what signal to generate.')
-    global selected_signal
-    selected_signal = StringVar()
-    signal_cb = ttk.Combobox(circuit, textvariable=selected_signal)
-    temp = []
-    for name in names_list:
-        temp.append(name)
-    signal_cb['values'] = temp
-    signal_cb['state'] = 'readonly'
-
     # Wait until the main loop is done loading the files
     while True:
         if len(response) != 0:
             if response.pop() == 'done':
                 break
+            
+    choose_signal = ttk.Label(circuit, text = 'Choose what signal to generate.')
+    global selected_signal
+    selected_signal = StringVar()
+    signal_cb = ttk.Combobox(circuit, textvariable=selected_signal)
+    
+    # convert the manager list to a normal list.
+    to_list = []
+    for name in names_list:
+        to_list.append(name)
+    
+    # Set the values of the dropdown and make sure that user cannot write into it.
+    signal_cb['values'] = to_list
+    signal_cb['state'] = 'readonly'
     
     # Check for error in file loading.
     if opcodes_list[0] == 'empty':
@@ -146,10 +150,13 @@ def Generate_event(status_text, response, names_list):
             # Wait until the main loop is done generating logic
             while True:
                 if len(response) != 0:
-                    if response.pop() == 'done':
+                    response_str = response.pop()
+                    if response_str == 'done':
+                        showinfo(title='Successful', message='The boolean equation has been copied to the clipboard.')
                         break
-
-            showinfo(title='Successful', message='The boolean equation has been copied to the clipboard.')
+                    if response_str == 'error':
+                        showerror(title='Failed', message='The boolean equation failed to generate. Please check the console.')
+                        break
 
         status_text.config(text = 'Done')
 
