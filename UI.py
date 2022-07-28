@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from pygubu.widgets.scrolledframe import ScrolledFrame
 import pathlib
-from tkinter.messagebox import showinfo
+from tkinter.messagebox import showinfo, showerror
 
 # Constants for the window
 BG_COLOR = '#1E1E1E'
@@ -146,10 +146,13 @@ def Generate_event(status_text, response, names_list):
             # Wait until the main loop is done generating logic
             while True:
                 if len(response) != 0:
-                    if response.pop() == 'done':
+                    response_str = response.pop()
+                    if response_str == 'done':
+                        showinfo(title='Successful', message='The boolean equation has been copied to the clipboard.')
                         break
-
-            showinfo(title='Successful', message='The boolean equation has been copied to the clipboard.')
+                    if response_str == 'error':
+                        showerror(title='Failed', message='The boolean equation failed to generate. Please check the console.')
+                        break
 
         status_text.config(text = 'Done')
 
