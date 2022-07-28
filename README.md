@@ -27,6 +27,8 @@ This program will create boolean expression using a GUI
  
 ## How to use the project
 
+Run the 'run_program.bat' in the folder.
+
 To start using the program. Two text file are needed.
 - opcodes.txt
 - signal_names.txt
