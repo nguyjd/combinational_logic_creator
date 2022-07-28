@@ -7,7 +7,25 @@ This program will create boolean expression using a GUI
   <li>Jonathon Nguyen</li>
 </ul>
 
-## How to use our project
+## Program UI
+
+<p align="center" style="margin-bottom: 0px">
+  <img height="400" src="https://raw.githubusercontent.com/nguyjd/combinational_logic_creator/main/program_images/main_screen.png" alt="Main screen" align="center">
+</p>
+<p align="center" >Figure 1: The main screen</p><br><br>
+  
+  
+<p align="center" style="margin-bottom: 0px">
+  <img height="400" src="https://raw.githubusercontent.com/nguyjd/combinational_logic_creator/main/program_images/active_signals.png" alt="truth table" align="center">
+</p>
+<p align="center" >Figure 2: Truth table</p><br><br>
+  
+<p align="center" style="margin-bottom: 0px">
+  <img height="200" src="https://raw.githubusercontent.com/nguyjd/combinational_logic_creator/main/program_images/confim_screen.png" alt="Confim screen" align="center">
+</p>
+<p align="center" >Figure 3: Confim screen.</p><br><br>
+ 
+## How to use the project
 
 To start using the program. Two text file are needed.
 - opcodes.txt
@@ -16,9 +34,9 @@ To start using the program. Two text file are needed.
 opcodes.txt contains the 'truth table' input portion
 For example in this truth table below, appending y_i to x_i is the opcode for this program.
 <p align="left" style="margin-bottom: 0px">
-  <img height="300" src="https://upload.wikimedia.org/wikipedia/commons/9/90/Truth_Table_of_Half_Adder.png" alt="half adder" align="center">
+  <img height="200" src="https://upload.wikimedia.org/wikipedia/commons/9/90/Truth_Table_of_Half_Adder.png" alt="half adder" align="center">
 </p>
-<p align="left" >Figure 1: Truth table of a half adder.</p>
+<p align="left" >Figure 4: Truth table of a half adder.</p>
 
 opcodes for the truth table.
 - 00
