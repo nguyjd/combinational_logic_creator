@@ -4,6 +4,8 @@ import multiprocessing
 from file_loading import load_opcodes_and_names
 from music_player import PlayMusic
 import UI
+from boolean_generation import boolean_generation
+from boolean_simplify import boolean_simplfy
 
 if __name__ == '__main__':
 
@@ -38,7 +40,7 @@ if __name__ == '__main__':
                     signals_list[:] = []
 
                     # Load the files
-                    opcodes, signals = load_opcodes_and_names()
+                    opcodes, signals = load_opcodes_and_names(debug=True)
                     
                     # add the loaded names and opcodes
                     for opcode in opcodes:
@@ -54,13 +56,23 @@ if __name__ == '__main__':
                     while len(logic_list) == 0:
                         pass
                     
-                    print('----------------------------------------------------------------------------------')
-                    print('Requested generation')
-                    print(logic_list.pop())
-                    print('----------------------------------------------------------------------------------')
+                    equation = boolean_generation(opcodes_list, logic_list.pop(), True)
 
-                    # Tell the UI that the program is done.
-                    response_list.append('done')
+                    if equation != None:
+                        equation = boolean_simplfy(equation, True)
+                        
+                        if equation != None:
+                            # Tell the UI that the program is done.
+                            response_list.append('done')
+                        else:
+                            # Tell the UI that the program has encountered a error.
+                            response_list.append('error')
+
+                    else:
+                        # Tell the UI that the program has encountered a error.
+                        response_list.append('error')
+
+                    
                     
                     
 
