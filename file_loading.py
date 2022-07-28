@@ -15,7 +15,9 @@ def load_opcodes_and_names(debug = False):
             opcodes_empty = False
 
         opcodes_len = len(opcodes[0].strip())
-        print(f'opcode length: {opcodes_len}')
+        if debug:
+            print(f'Found opcodes.txt')
+            print(f'opcode length: {opcodes_len}')
         for index, opcode in enumerate(opcodes):
             
             # Remove the newline
@@ -56,6 +58,8 @@ def load_opcodes_and_names(debug = False):
         else:
             signal_names_empty = False
 
+        if debug:
+            print(f'Found signal_names.txt')
         # Remove the newline
         for index, name in enumerate(signal_names):
             signal_names[index] = name.strip()
