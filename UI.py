@@ -123,7 +123,6 @@ def Generate_event(status_text, response, names_list):
 
     if have_loaded: 
 
-        print(selected_signal.get())
         # Find the signal to send
         found_signal = False
         for index, signal in enumerate(names_list):
