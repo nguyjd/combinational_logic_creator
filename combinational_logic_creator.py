@@ -65,8 +65,12 @@ if __name__ == '__main__':
                     if equation != None:
                         
                         # simplfy multiple time to ensure the equation is the most simple.
-                        for _ in range(0, 10):
+                        while True:
+                            old_equation = equation
                             equation = boolean_simplfy(equation, True)
+                            if equation == old_equation:
+                                break
+
                         
                         # Check for error in simplfing.
                         if equation != None:
