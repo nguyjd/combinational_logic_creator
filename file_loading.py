@@ -14,7 +14,8 @@ def load_opcodes_and_names(debug = False):
         else:
             opcodes_empty = False
 
-        opcodes_len = opcodes[0].strip()
+        opcodes_len = len(opcodes[0].strip())
+        print(f'opcode length: {opcodes_len}')
         for index, opcode in enumerate(opcodes):
             
             # Remove the newline
