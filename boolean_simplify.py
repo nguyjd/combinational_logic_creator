@@ -2,17 +2,17 @@ import boolean
 
 def boolean_simplfy(expression: str, debug = False):
 
-    # Remove the whitespace if there are any.
-    expression = ''.join(expression.split())
-
-    if debug:
-        print(f'Parsing: {expression}')
-
     # Parse the string.
     try:
-
-        if len(expression) == 0:
+        
+        if expression == None or len(expression) == 0:
             raise ValueError('Empty expression')
+
+        # Remove the whitespace if there are any.
+        expression = ''.join(expression.split())
+
+        if debug:
+            print(f'Parsing: {expression}')
 
         unaccountedPair = 0
         for index, symb in enumerate(expression):
